@@ -1,0 +1,9 @@
+---
+# handlers file for frr
+- name: 'restart frr'
+  systemd:
+    name: "{{ frr_service }}"
+    state: 'restarted'
+  when: ansible_service_mgr == 'systemd'
+  listen: 'restart frr'
+  become: true

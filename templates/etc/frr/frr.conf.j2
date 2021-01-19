@@ -1,0 +1,119 @@
+
+!! {{ ansible_managed }}
+
+!! Basic Config
+{% if frr_config_basic_raw is defined %}
+{{ frr_config_basic_raw }}
+{% else %}
+frr version {{ frr_installed_version }}
+frr defaults traditional
+hostname {{ inventory_hostname }}
+log syslog informational
+service integrated-vtysh-config
+line vty
+{% endif %}
+
+!! filter
+{% if frr_config_filter_raw is defined %}
+{{ frr_config_filter_raw }}
+{% endif %}
+
+!! route map
+{% if frr_config_routemap_raw is defined %}
+{{ frr_config_routemap_raw }}
+{% endif %}
+
+!! interfaces
+{% if frr_config_interfaces_raw is defined %}
+{{ frr_config_interfaces_raw }}
+{% endif %}
+
+!! Bidirectional Forwarding Detection
+{% if frr_config_bfd_raw is defined %}
+{{ frr_config_bfd_raw }}
+{% endif %}
+
+!! Border Gateway Protocol
+{% if frr_config_bgp_raw is defined %}
+{{ frr_config_bgp_raw }}
+{% endif %}
+
+!! Babel
+{% if frr_config_babel_raw is defined %}
+{{ frr_config_babel_raw }}
+{% endif %}
+
+!! OpenFabric
+{% if frr_config_fabric_raw is defined %}
+{{ frr_config_fabric_raw }}
+{% endif %}
+
+!! MPLS
+{% if frr_config_ldp_raw is defined %}
+{{ frr_config_ldp_raw }}
+{% endif %}
+
+!! Enhanced Interior Gateway Routing Protocol
+{% if frr_config_eigrp_raw is defined %}
+{{ frr_config_eigrp_raw }}
+{% endif %}
+
+!! Intermediate System to Intermediate System
+{% if frr_config_isis_raw is defined %}
+{{ frr_config_isis_raw }}
+{% endif %}
+
+!! Next Hop Routing Protocol
+{% if frr_config_nhrpd_raw is defined %}
+{{ frr_config_nhrpd_raw }}
+{% endif %}
+
+!! Open Shortest Path First v2
+{% if frr_config_ospf_raw is defined %}
+{{ frr_config_ospf_raw }}
+{% endif %}
+
+!! Open Shortest Path First v3
+{% if frr_config_ospf6_raw is defined %}
+{{ frr_config_ospf6_raw }}
+{% endif %}
+
+!! Protocol Independent Multicast
+{% if frr_config_pim_raw is defined %}
+{{ frr_config_pim_raw }}
+{% endif %}
+
+!! Policy Based Routing
+{% if frr_config_pbr_raw is defined %}
+{{ frr_config_pbr_raw }}
+{% endif %}
+
+!! Routing Information Protocol
+{% if frr_config_rip_raw is defined %}
+{{ frr_config_rip_raw }}
+{% endif %}
+
+!! Routing Information Protocol Next Generation
+{% if frr_config_ripng_raw is defined %}
+{{ frr_config_ripng_raw }}
+{% endif %}
+
+!! ( Secured Hierarchical Anonymous | Super Happy Advanced ) Routing Process
+{% if frr_config_sharp_raw is defined %}
+{{ frr_config_sharp_raw }}
+{% endif %}
+
+!! Static Routes
+{% if frr_config_static_raw is defined %}
+{{ frr_config_static_raw }}
+{% endif %}
+
+!! Virtual Router Redundancy Protocol
+{% if frr_config_vrrp_raw is defined %}
+{{ frr_config_vrrp_raw }}
+{% endif %}
+
+!! BGP Monitoring Protocol
+{% if frr_config_bmp_raw is defined %}
+{{ frr_config_bmp_raw }}
+{% endif %}

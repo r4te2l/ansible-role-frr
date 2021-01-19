@@ -1,0 +1,8 @@
+---
+- name: "Install FRR packages"
+  apt:
+    name: "{{ frr_packages }}"
+    state: "{{ frr_package_state }}"
+    update_cache: "{{ frr_update_pkg_cache }}"
+  register: _frr_pkg_install
+  become: true

@@ -1,0 +1,60 @@
+---
+- name: 'Define frr_packages'
+  set_fact:
+    frr_packages: "{{ __frr_packages }}"
+  when: frr_packages is not defined
+
+- name: 'Define frr_package_state'
+  set_fact:
+    frr_package_state: "{{ __frr_package_state }}"
+  when: frr_package_state is not defined
+
+- name: 'Define frr_service'
+  set_fact:
+    frr_service: "{{ __frr_service }}"
+  when: frr_service is not defined
+
+- name: 'Define frr_service_state'
+  set_fact:
+    frr_service_state: "{{ __frr_service_state }}"
+  when: frr_service_state is not defined
+
+- name: 'Define frr_service_enabled'
+  set_fact:
+    frr_service_enabled: "{{ __frr_service_enabled }}"
+  when: frr_service_enabled is not defined
+
+- name: 'Define frr_apt_repo_state'
+  set_fact:
+    frr_apt_repo_state: "{{ __frr_apt_repo_state }}"
+  when:
+    - frr_apt_repo_state is not defined
+    - __frr_apt_repo_state is defined
+
+- name: 'Define frr_apt_repo_file'
+  set_fact:
+    frr_apt_repo_file: "{{ __frr_apt_repo_file }}"
+  when:
+    - frr_apt_repo_file is not defined
+    - __frr_apt_repo_file is defined
+
+- name: 'Define frr_apt_gpg_key'
+  set_fact:
+    frr_apt_gpg_key: "{{ __frr_apt_gpg_key }}"
+  when:
+    - frr_apt_gpg_key is not defined
+    - __frr_apt_gpg_key is defined
+
+- name: 'Define frr_apt_release'
+  set_fact:
+    frr_apt_release: "{{ __frr_apt_release }}"
+  when:
+    - frr_apt_release is not defined
+    - __frr_apt_release is defined
+
+- name: 'Define frr_apt_repo'
+  set_fact:
+    frr_apt_repo: "{{ __frr_apt_repo }}"
+  when:
+    - frr_apt_repo is not defined
+    - __frr_apt_repo is defined

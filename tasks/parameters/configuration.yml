@@ -1,0 +1,127 @@
+---
+- name: 'Define frr_installed_version'
+  when: frr_config_basic_raw is not defined
+  block:
+    - name: "Pull FRR Version from vtysh"
+      shell:
+        cmd: vtysh --command "show version" | grep -E "^FRRouting " | cut -f 2 -d " "
+      changed_when: false
+      register: frr_ver_shell
+      become: true
+    - name: 'Define frr_installed_version'
+      set_fact:
+        frr_installed_version: "{{ frr_ver_shell.stdout }}"
+    - debug:
+        var: frr_installed_version
+
+- name: 'Define frr_babeld_enabled'
+  set_fact:
+    frr_babeld_enabled: true
+  when:
+    - frr_babeld_enabled is not defined
+    - frr_config_babel_raw is defined
+
+- name: 'Define frr_bfdd_enabled'
+  set_fact:
+    frr_bfdd_enabled: true
+  when:
+    - frr_bfdd_enabled is not defined
+    - frr_config_bfd_raw is defined
+
+- name: 'Define frr_bgpd_enabled'
+  set_fact:
+    frr_bgpd_enabled: true
+  when:
+    - frr_bgpd_enabled is not defined
+    - frr_config_bgp_raw is defined
+
+- name: 'Define frr_eigrpd_enabled'
+  set_fact:
+    frr_eigrpd_enabled: true
+  when:
+    - frr_eigrpd_enabled is not defined
+    - frr_config_eigrp_raw is defined
+
+- name: 'Define frr_fabricd_enabled'
+  set_fact:
+    frr_fabricd_enabled: true
+  when:
+    - frr_fabricd_enabled is not defined
+    - frr_config_fabric_raw is defined
+
+- name: 'Define frr_isisd_enabled'
+  set_fact:
+    frr_isisd_enabled: true
+  when:
+    - frr_isisd_enabled is not defined
+    - frr_config_isis_raw is defined
+
+- name: 'Define frr_ldpd_enabled'
+  set_fact:
+    frr_ldpd_enabled: true
+  when:
+    - frr_ldpd_enabled is not defined
+    - frr_config_ldp_raw is defined
+
+- name: 'Define frr_nhrpd_enabled'
+  set_fact:
+    frr_nhrpd_enabled: true
+  when:
+    - frr_nhrpd_enabled is not defined
+    - frr_config_nhrpd_raw is defined
+
+- name: 'Define frr_ospf6d_enabled'
+  set_fact:
+    frr_ospf6d_enabled: true
+  when:
+    - frr_ospf6d_enabled is not defined
+    - frr_config_ospf6_raw is defined
+
+- name: 'Define frr_ospfd_enabled'
+  set_fact:
+    frr_ospfd_enabled: true
+  when:
+    - frr_ospfd_enabled is not defined
+    - frr_config_ospf_raw is defined
+
+- name: 'Define frr_pbrd_enabled'
+  set_fact:
+    frr_pbrd_enabled: true
+  when:
+    - frr_pbrd_enabled is not defined
+    - frr_config_pbr_raw is defined
+
+- name: 'Define frr_pimd_enabled'
+  set_fact:
+    frr_pimd_enabled: true
+  when:
+    - frr_pimd_enabled is not defined
+    - frr_config_pim_raw is defined
+
+- name: 'Define frr_ripd_enabled'
+  set_fact:
+    frr_ripd_enabled: true
+  when:
+    - frr_ripd_enabled is not defined
+    - frr_config_rip_raw is defined
+
+- name: 'Define frr_ripngd_enabled'
+  set_fact:
+    frr_ripngd_enabled: true
+  when:
+    - frr_ripngd_enabled is not defined
+    - frr_config_ripng_raw is defined
+
+- name: 'Define frr_sharpd_enabled'
+  set_fact:
+    frr_sharpd_enabled: true
+  when:
+    - frr_sharpd_enabled is not defined
+    - frr_config_sharp_raw is defined
+
+- name: 'Define frr_staticd_enabled'
+  set_fact:
+    frr_staticd_enabled: true
+  when:
+    - frr_staticd_enabled is not defined
+    - frr_config_static_raw is defined

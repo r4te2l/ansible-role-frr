@@ -1,0 +1,7 @@
+---
+- name: "Manage FRR Service"
+  service:
+    name: "{{ frr_service }}"
+    enabled: "{{ frr_service_enabled }}"
+    state: "{{ frr_service_state }}"
+  become: true

@@ -1,0 +1,48 @@
+---
+- name: "Manage FRR daemons"
+  template:
+    backup: true
+    dest: "{{ frr_daemon_file }}"
+    src: 'etc/frr/daemons.j2'
+  register: frr_daemon_template
+  notify: 'restart frr'
+  become: true
+
+- name: "Manage FRR frr.conf"
+  template:
+    backup: true
+    dest: "{{ frr_config_file }}"
+    src: 'etc/frr/frr.conf.j2'
+  register: frr_config_template
+  notify: 'restart frr'
+  become: true
+
+- name: "Validate FRR Config"
+  block:
+    - name: "Test FRR Config"
+      shell:
+        cmd: vtysh --dryrun
+      changed_when: false
+      become: true
+
+  rescue:
+    - name: "Restore backup FRR daemons"
+      copy:
+        dest: "{{ frr_daemon_file }}"
+        remote_src: true
+        src: "{{ frr_daemon_template.backup_file }}"
+      when: frr_daemon_template.backup_file is defined
+      become: true
+
+    - name: "Restore backup FRR frr.conf"
+      copy:
+        dest: "{{ frr_config_file }}"
+        remote_src: true
+        src: "{{ frr_config_template.backup_file }}"
+      when: frr_config_template.backup_file is defined
+      become: true
+
+    - name: "Test FRR Config"
+      shell:
+        cmd: vtysh --dryrun
+      become: true

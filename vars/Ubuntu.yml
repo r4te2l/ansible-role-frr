@@ -1,0 +1,15 @@
+---
+__frr_packages:
+  - frr
+  - frr-pythontools
+__frr_package_state: 'latest'
+
+__frr_service: 'frr'
+__frr_service_state: 'started'
+__frr_service_enabled: true
+
+__frr_apt_repo_state: 'present'
+__frr_apt_repo_file: '/etc/apt/sources.list.d/frr.list'
+__frr_apt_gpg_key: 'https://deb.frrouting.org/frr/keys.asc'
+__frr_apt_release: 'frr-stable'
+__frr_apt_repo: "deb https://deb.frrouting.org/frr {{ ansible_distribution_release }} {{ frr_apt_release }}"

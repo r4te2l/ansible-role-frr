@@ -1,0 +1,32 @@
+---
+# tasks file for frr
+- name: "Include {{ ansible_distribution }} vars"
+  include_vars: "{{ ansible_distribution }}.yml"
+
+- name: "Define Parameters"
+  include_tasks: "parameters/main.yml"
+
+- name: "Manage FRR Repo"
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "repository/{{ ansible_pkg_mgr }}.yml"
+    - "repository/pkg_mgr_not_found.yml"
+  when: frr_manage_repo
+
+- name: "Install FRR"
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "install/{{ ansible_distribution }}.yml"
+    - 'install/generic.yml'
+
+- name: "Manage FRR Services"
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "services/{{ ansible_service_mgr }}.yml"
+    - 'services/generic.yml'
+
+- name: "Define Configuration Parameters"
+  include_tasks: "parameters/configuration.yml"
+
+- name: "Configure FRR"
+  include_tasks: "configure.yml"

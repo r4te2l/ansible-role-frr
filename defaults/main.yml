@@ -1,0 +1,187 @@
+---
+# defaults file for frr
+frr_manage_repo: true
+frr_update_pkg_cache: true
+frr_daemon_file: '/etc/frr/daemons'
+frr_config_file: '/etc/frr/frr.conf'
+
+################################################################################
+# /etc/frr/daemons
+################################################################################
+# Intentionally commented out
+# frr_babeld_enabled: false
+# frr_bfdd_enabled: false
+# frr_bgpd_enabled: false
+# frr_eigrpd_enabled: false
+# frr_fabricd_enabled: false
+# frr_isisd_enabled: false
+# frr_ldpd_enabled: false
+# frr_nhrpd_enabled: false
+# frr_ospf6d_enabled: false
+# frr_ospfd_enabled: false
+# frr_pbrd_enabled: false
+# frr_pimd_enabled: false
+# frr_ripd_enabled: false
+# frr_ripngd_enabled: false
+# frr_sharpd_enabled: false
+# frr_staticd_enabled: false
+
+frr_vtysh_enable: true
+frr_babeld_options: '"  --daemon -A 127.0.0.1"'
+frr_bfdd_options: '"  --daemon -A 127.0.0.1"'
+frr_bgpd_options: '"   --daemon -A 127.0.0.1"'
+frr_eigrpd_options: '"  --daemon -A 127.0.0.1"'
+frr_fabricd_options: '"  --daemon -A 127.0.0.1"'
+frr_isisd_options: '"  --daemon -A 127.0.0.1"'
+frr_ldpd_options: '"  --daemon -A 127.0.0.1"'
+frr_nhrpd_options: '"  --daemon -A 127.0.0.1"'
+frr_ospf6d_options: '" --daemon -A ::1"'
+frr_ospfd_options: '"  --daemon -A 127.0.0.1"'
+frr_pbrd_options: '"  --daemon -A 127.0.0.1"'
+frr_pimd_options: '"  --daemon -A 127.0.0.1"'
+frr_ripd_options: '"   --daemon -A 127.0.0.1"'
+frr_ripngd_options: '" --daemon -A ::1"'
+frr_sharpd_options: '"  --daemon -A 127.0.0.1"'
+frr_staticd_options: '"  --daemon -A 127.0.0.1"'
+frr_zebra_options: '" -s 90000000 --daemon -A 127.0.0.1"'
+
+# Intentionally commented out
+# frr_max_fds: 1024
+# frr_watch_frr_options: '""'
+################################################################################
+
+################################################################################
+# /etc/frr/frr.conf
+################################################################################
+# http://docs.frrouting.org/en/latest/setup.html
+# frr_config_basic_raw: |
+#   frr version 7.5
+#   frr defaults traditional
+#   hostname {{ inventory_hostname }}
+#   log syslog informational
+#   service integrated-vtysh-config
+#   line vty
+
+# http://docs.frrouting.org/en/latest/filter.html
+# frr_config_filter_raw: |
+#   ...
+#   ...
+
+# http://docs.frrouting.org/en/latest/routemap.html
+# frr_config_routemap_raw: |
+#   ...
+#   ...
+
+# http://docs.frrouting.org/en/latest/zebra.html#id3
+# frr_config_interfaces_raw: |
+#   ...
+#   ...
+
+# Bidirectional Forwarding Detection
+# http://docs.frrouting.org/en/latest/bfd.html
+# frr_config_bfd_raw: |
+#   ...
+#   ...
+
+# Border Gateway Protocol
+# http://docs.frrouting.org/en/latest/bgp.html
+# frr_config_bgp_raw: |
+#   ...
+#   ...
+
+# Babel
+# http://docs.frrouting.org/en/latest/babeld.html
+# frr_config_babel_raw: |
+#   ...
+#   ...
+
+# OpenFabric
+# http://docs.frrouting.org/en/latest/fabricd.html
+# frr_config_fabric_raw: |
+#   ...
+#   ...
+
+# MPLS
+# http://docs.frrouting.org/en/latest/ldpd.html
+# frr_config_ldp_raw: |
+#   ...
+#   ...
+
+# Enhanced Interior Gateway Routing Protocol
+# http://docs.frrouting.org/en/latest/eigrpd.html
+# frr_config_eigrp_raw: |
+#   ...
+#   ...
+
+# Intermediate System to Intermediate System
+# http://docs.frrouting.org/en/latest/isisd.html
+# frr_config_isis_raw: |
+#   ...
+#   ...
+
+# Next Hop Routing Protocol
+# http://docs.frrouting.org/en/latest/nhrpd.html
+# frr_config_nhrpd_raw: |
+#   ...
+#   ...
+
+# Open Shortest Path First v2
+# http://docs.frrouting.org/en/latest/ospfd.html
+# frr_config_ospf_raw: |
+#   ...
+#   ...
+
+# Open Shortest Path First v3
+# http://docs.frrouting.org/en/latest/ospf6d.html
+# frr_config_ospf6_raw: |
+#   ...
+#   ...
+
+# Protocol Independent Multicast
+# http://docs.frrouting.org/en/latest/pim.html
+# frr_config_pim_raw: |
+#   ...
+#   ...
+
+# Policy Based Routing
+# http://docs.frrouting.org/en/latest/pbr.html
+# frr_config_pbr_raw: |
+#   ...
+#   ...
+
+# Routing Information Protocol
+# http://docs.frrouting.org/en/latest/ripd.html
+# frr_config_rip_raw: |
+#   ...
+#   ...
+
+# Routing Information Protocol Next Generation
+# http://docs.frrouting.org/en/latest/ripngd.html
+# frr_config_ripng_raw: |
+#   ...
+#   ...
+
+# Secured Hierarchical Anonymous Routing Protocol
+# Super Happy Advanced Routing Process
+# http://docs.frrouting.org/en/latest/sharp.html
+# frr_config_sharp_raw: |
+#   ...
+#   ...
+
+# Static Routes
+# http://docs.frrouting.org/en/latest/static.html
+# frr_config_static_raw: |
+#   ...
+#   ...
+
+# Virtual Router Redundancy Protocol
+# http://docs.frrouting.org/en/latest/vrrp.html
+# frr_config_vrrp_raw: |
+#   ...
+#   ...
+
+# BGP Monitoring Protocol
+# http://docs.frrouting.org/en/latest/bmp.html
+# frr_config_bmp_raw: |
+#   ...
+#   ...

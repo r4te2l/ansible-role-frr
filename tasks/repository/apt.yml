@@ -1,0 +1,14 @@
+---
+- name: "Manage FRR apt key"
+  apt_key:
+    state: "{{ frr_apt_repo_state }}"
+    url: "{{ frr_apt_gpg_key }}"
+  become: true
+
+- name: "Manage FRR apt repository"
+  apt_repository:
+    filename: "{{ frr_apt_repo_file }}"
+    repo: "{{ frr_apt_repo }}"
+    state: "{{ frr_apt_repo_state }}"
+    update_cache: true
+  become: true

@@ -1,0 +1,50 @@
+{% macro bool2yesno(v) -%}
+{%- if v | bool -%}
+yes
+{%- else -%}
+no
+{%- endif -%}
+{%- endmacro %}
+{{ ansible_managed | comment }}
+
+bgpd={{ bool2yesno( frr_bgpd_enabled | default(false) ) }}
+ospfd={{ bool2yesno( frr_ospfd_enabled | default(false) ) }}
+ospf6d={{ bool2yesno( frr_ospf6d_enabled | default(false) ) }}
+ripd={{ bool2yesno( frr_ripd_enabled | default(false) ) }}
+ripngd={{ bool2yesno( frr_ripngd_enabled | default(false) ) }}
+isisd={{ bool2yesno( frr_isisd_enabled | default(false) ) }}
+pimd={{ bool2yesno( frr_pimd_enabled | default(false) ) }}
+ldpd={{ bool2yesno( frr_ldpd_enabled | default(false) ) }}
+nhrpd={{ bool2yesno( frr_nhrpd_enabled | default(false) ) }}
+eigrpd={{ bool2yesno( frr_eigrpd_enabled | default(false) ) }}
+babeld={{ bool2yesno( frr_babeld_enabled | default(false) ) }}
+sharpd={{ bool2yesno( frr_sharpd_enabled | default(false) ) }}
+staticd={{ bool2yesno( frr_staticd_enabled | default(false) ) }}
+pbrd={{ bool2yesno( frr_pbrd_enabled | default(false) ) }}
+bfdd={{ bool2yesno( frr_bfdd_enabled | default(false) ) }}
+fabricd={{ bool2yesno( frr_fabricd_enabled | default(false) ) }}
+
+vtysh_enable={{ bool2yesno( frr_vtysh_enable ) }}
+zebra_options={{ frr_zebra_options }}
+bgpd_options={{ frr_bgpd_options }}
+ospfd_options={{ frr_ospfd_options }}
+ospf6d_options={{ frr_ospf6d_options }}
+ripd_options={{ frr_ripd_options }}
+ripngd_options={{ frr_ripngd_options }}
+isisd_options={{ frr_isisd_options }}
+pimd_options={{ frr_pimd_options }}
+ldpd_options={{ frr_ldpd_options }}
+nhrpd_options={{ frr_nhrpd_options }}
+eigrpd_options={{ frr_eigrpd_options }}
+babeld_options={{ frr_babeld_options }}
+sharpd_options={{ frr_sharpd_options }}
+staticd_options={{ frr_staticd_options }}
+pbrd_options={{ frr_pbrd_options }}
+bfdd_options={{ frr_bfdd_options }}
+fabricd_options={{ frr_fabricd_options }}
+{% if frr_max_fds is defined %}
+MAX_FDS={{ frr_max_fds }}
+{% endif %}
+{% if frr_watch_frr_options is defined %}
+watchfrr_options={{ frr_watch_frr_options }}
+{% endif %}

@@ -1,0 +1,26 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint:
+  name: yamllint
+platforms:
+  - name: frr
+    box: ubuntu/focal64
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  inventory:
+    host_vars:
+      frr:
+        frr_config_eigrp_raw: |
+          router eigrp 64512
+            network 192.0.2.0/24
